@@ -4,8 +4,8 @@ import re
 from underthesea import word_tokenize, text_normalize
 
 try:
-    model = joblib.load('svm_model_2_nhan.pkl')
-    tfidf_vectorizer = joblib.load('vectorizer_2_nhan.pkl')
+    model = joblib.load('App/svm_model_2_nhan.pkl')
+    tfidf_vectorizer = joblib.load('App/vectorizer_2_nhan.pkl')
 except FileNotFoundError:
     st.error("Không tìm thấy file model/vectorizer. Vui lòng tạo lại .pkl trước khi chạy.")
     st.stop()
