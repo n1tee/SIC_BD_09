@@ -1,4 +1,4 @@
-# **Phân tích cảm xúc bình luận của khách hàng bình luận | SIC_BD_09** ‍️
+# **Phân tích cảm xúc của khách hàng thông qua bình luận sản phẩm trên Tiki | SIC_BD_09** ‍️
 
 Một ứng dụng web được xây dựng bằng **Streamlit** để thực hiện các tác vụ xử lý ngôn ngữ tự nhiên (NLP) cho Tiếng Việt. 
 Dự án sử dụng thư viện `underthesea` làm công cụ cốt lõi để phân tích và xử lý văn bản.
