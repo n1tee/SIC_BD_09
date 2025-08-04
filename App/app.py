@@ -101,11 +101,56 @@ with col2:
             pred = model.predict(vec)[0]
             progress.progress(100)
 
+            probs = model.predict_proba(vec)[0]
+            classes = list(model.classes_)
+            pos_idx = classes.index('cực kỳ hài lòng')
+            neg_idx = classes.index('không hài lòng')
+            pos_pct = int(probs[pos_idx] * 100)
+            neg_pct = int(probs[neg_idx] * 100)
             st.markdown("<div class='result-card'>", unsafe_allow_html=True)
+
             if pred == 'cực kỳ hài lòng':
-                st.success(f"{pred.upper()}")
+                st.success(pred.upper())
             else:
-                st.error(f"{pred.upper()}")
+                st.error(pred.upper())
+
+            st.write("**Tỷ lệ dự đoán**")
+            colp, coln = st.columns(2)
+
+            with colp:
+                st.write("Cực kỳ hài lòng")
+                st.markdown(f"""
+                <div style="background-color: #ddd; border-radius: 5px; overflow: hidden; margin-bottom: 0.5rem;">
+                  <div style="
+                      width: {pos_pct}%;
+                      background-color: #4CAF50;
+                      color: white;
+                      text-align: center;
+                      padding: 4px 0;
+                      font-weight: bold;
+                  ">
+                    {pos_pct}%
+                  </div>
+                </div>
+                """, unsafe_allow_html=True)
+
+            with coln:
+                st.write("Không hài lòng")
+                st.markdown(f"""
+                <div style="background-color: #ddd; border-radius: 5px; overflow: hidden; margin-bottom: 0.5rem;">
+                  <div style="
+                      width: {neg_pct}%;
+                      background-color: #F44336;
+                      color: white;
+                      text-align: center;
+                      padding: 4px 0;
+                      font-weight: bold;
+                  ">
+                    {neg_pct}%
+                  </div>
+                </div>
+                """, unsafe_allow_html=True)
+
             st.write("**Bình luận gốc:**", user_input)
             st.markdown("</div>", unsafe_allow_html=True)
 
